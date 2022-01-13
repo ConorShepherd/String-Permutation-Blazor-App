@@ -5,16 +5,16 @@ namespace StringPermutation.Data
 {
     public class PalindromeService : IStringPermutationService
     {
-        public string Description => "Checks if a string is a palindrome";
+        public string Description => "Checks if a string is a palindrome. The tool is case insensitive.";
 
         public bool HasValidPermutation(string s)
         {
             string _reverseString = "";
             for (int i = s.Length - 1; i >= 0; i--)
             {
-                _reverseString += s[i].ToString();
+                _reverseString += s[i].ToString().ToLower();
             }
-            return _reverseString == s;
+            return _reverseString == s.ToLower();
         }
     }
 }

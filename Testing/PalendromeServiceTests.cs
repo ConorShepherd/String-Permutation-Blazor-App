@@ -8,6 +8,7 @@ namespace Testing
     {
         [DataTestMethod]
         [DataRow("dad", true)]
+        [DataRow("Dad", true)]
         [DataRow("abc", false)]
         [DataRow("rotor", true)]
         [DataRow("", true)]

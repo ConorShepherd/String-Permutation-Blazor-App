@@ -1,4 +1,4 @@
-﻿@page "/stringtool"
+﻿@page "/"
 @using StringPermutation.Data
 @inject IStringPermutationService service
 
@@ -22,7 +22,7 @@
 
     private string GetDescription()
     {
-        return $"{checkedInput} has {(inputHasPermutation ? "" : "no")} permutations";
+        return $"{checkedInput} has {(inputHasPermutation ? "at least one valid permutation" : "no permutations")}";
     }
 
     public override Task SetParametersAsync(ParameterView parameters)
