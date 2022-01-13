@@ -14,8 +14,8 @@ namespace StringPermutation.Data
         public bool HasValidPermutation(string s)
         {
             string formattedInput = RemoveSpacesAndMakeLowerCase(s);
-            int[] _charCount = ProcessStringByCountingChars(formattedInput);
-            return HasNoMoreThanOneOddEntry(_charCount);
+            int[] charCount = ProcessStringCountingChars(formattedInput);
+            return HasNoMoreThanOneOddEntry(charCount);
         }
 
         private string RemoveSpacesAndMakeLowerCase(string s)
@@ -23,7 +23,7 @@ namespace StringPermutation.Data
             return s.Replace(" ", "").ToLower();
         }
 
-        private int[] ProcessStringByCountingChars(string s)
+        private int[] ProcessStringCountingChars(string s)
         {
             int ASCII_CHARACTER_COUNT = 256;
             

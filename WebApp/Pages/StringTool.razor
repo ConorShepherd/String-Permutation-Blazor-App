@@ -10,14 +10,15 @@
 <button class="btn btn-primary" @onclick="CheckPermutations">Check Input</button>
 
 @code {
+
     private string _boundText = "Pot spot";
     private string checkedInput;
     private bool inputHasPermutation;
 
-    private void CheckPermutations()
+    public override Task SetParametersAsync(ParameterView parameters)
     {
-        inputHasPermutation = service.HasValidPermutation(_boundText);
-        checkedInput = _boundText;
+        CheckPermutations();
+        return base.SetParametersAsync(parameters);
     }
 
     private string GetDescription()
@@ -25,9 +26,9 @@
         return $"{checkedInput} has {(inputHasPermutation ? "at least one valid permutation" : "no permutations")}";
     }
 
-    public override Task SetParametersAsync(ParameterView parameters)
+    private void CheckPermutations()
     {
-        CheckPermutations();
-        return base.SetParametersAsync(parameters);
+        inputHasPermutation = service.HasValidPermutation(_boundText);
+        checkedInput = _boundText;
     }
 }
