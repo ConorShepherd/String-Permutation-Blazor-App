@@ -1,0 +1,33 @@
+﻿@page "/stringtool"
+@using StringPermutation.Data
+@inject IStringPermutationService service
+
+<h1>@service.Description</h1>
+
+<p>@GetDescription()</p>
+
+<input @bind="_boundText" />
+<button class="btn btn-primary" @onclick="CheckPermutations">Check Input</button>
+
+@code {
+    private string _boundText = "Pot spot";
+    private string checkedInput;
+    private bool inputHasPermutation;
+
+    private void CheckPermutations()
+    {
+        inputHasPermutation = service.HasValidPermutation(_boundText);
+        checkedInput = _boundText;
+    }
+
+    private string GetDescription()
+    {
+        return $"{checkedInput} has {(inputHasPermutation ? "" : "no")} permutations";
+    }
+
+    public override Task SetParametersAsync(ParameterView parameters)
+    {
+        CheckPermutations();
+        return base.SetParametersAsync(parameters);
+    }
+}
